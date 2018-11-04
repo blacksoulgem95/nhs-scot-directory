@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import MapComponent from "./MapComponent";
-import AdSense from 'react-adsense';
 import {geolocated} from "react-geolocated";
 
 class App extends Component {
@@ -27,28 +26,13 @@ class App extends Component {
     }
 
     render() {
-        if (this.state.loading) return <h1>Loading</h1>;
         return (
-            <div id="layout" className="grid">
-                <div id="ad-left" className="ad-left">
-                    <AdSense.Google
-                        client='ca-pub-6556679459228558'
-                        slot='1330208099'
-                    />
-                </div>
-                <div id="content" className="content">
-                    {this.state.loading ? null : <MapComponent
-                        center={this.state.center}
-                        loadingElement={<div style={{height: `100%`}}/>}
-                        containerElement={<div style={{height: `100vh`}}/>}
-                        mapElement={<div style={{height: `100%`}}/>}/>}
-                </div>
-                <div id="ad-right" className="ad-right">
-                    <AdSense.Google
-                        client='ca-pub-6556679459228558'
-                        slot='3843447529'
-                    />
-                </div>
+            <div id="content" className="content">
+                {this.state.loading ? <h1>Tracking your location...</h1> : <MapComponent
+                    center={this.state.center}
+                    loadingElement={<div style={{height: `100%`}}/>}
+                    containerElement={<div style={{height: `100vh`}}/>}
+                    mapElement={<div style={{height: `100%`}}/>}/>}
             </div>
         );
     }
