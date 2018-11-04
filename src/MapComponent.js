@@ -1,5 +1,5 @@
 import React from "react";
-import {GoogleMap, withGoogleMap} from "react-google-maps"
+import {GoogleMap, Marker, withGoogleMap} from "react-google-maps"
 import firebase from "firebase/app";
 import MarkerWithLabel from "react-google-maps/lib/components/addons/MarkerWithLabel";
 
@@ -54,10 +54,15 @@ class MapComponent extends React.Component {
                     >
                         {this.state.docs.map(d => {
                             console.log("adding mark for", d);
+                            return (<Marker
+                                position={{lat: d.geopoint._lat, lng: d.geopoint._long}}/>)
+                        })}
+                        {this.state.docs.map(d => {
+                            console.log("adding mark for", d);
                             return (<MarkerWithLabel
                                 position={{lat: d.geopoint._lat, lng: d.geopoint._long}}
                                 labelAnchor={new window.google.maps.Point(0, 0)}
-                                labelStyle={{backgroundColor: "rgba(255,255,255,0.8)"}}
+                                labelClass="marker-label"
                             >
                                 <div>
                                     <p>{d.GPPracticeName}</p>
@@ -71,8 +76,9 @@ class MapComponent extends React.Component {
                                 </div>
                             </MarkerWithLabel>)
                         })}
-                        <MarkerWithLabel position={this.props.center}
-                                         labelStyle={{backgroundColor: "rgba(255,255,255,0.8)"}}>
+                        <Marker position={{lat: this.props.center.lat, lng: this.props.center.lng}}/>
+                        <MarkerWithLabel position={{lat: this.props.center.lat, lng: this.props.center.lng}}
+                                         labelClass="marker-label">
                             <p>Your position</p>
                         </MarkerWithLabel>
                     </GoogleMap>
