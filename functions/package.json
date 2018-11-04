@@ -1,0 +1,27 @@
+{
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@google/maps": "^0.5.5",
+    "child-process-promise": "^2.2.1",
+    "csvtojson": "^2.0.8",
+    "firebase-admin": "~6.0.0",
+    "firebase-functions": "^2.0.3",
+    "util.promisify": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/promise.prototype.finally": "^2.0.2",
+    "tslint": "~5.8.0",
+    "typescript": "~2.8.3"
+  },
+  "private": true
+}

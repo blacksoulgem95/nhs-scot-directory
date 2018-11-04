@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^5.5.7",
     "react": "^16.6.0",
+    "react-adsense": "^0.0.6",
     "react-dom": "^16.6.0",
+    "react-geolocated": "^2.4.0",
+    "react-google-maps": "^9.4.5",
     "react-scripts": "2.1.0"
   },
   "scripts": {
